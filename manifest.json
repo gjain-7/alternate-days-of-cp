@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+"name": "Alternate Days of CP",
+"version": "1.0",
+"description": "An Extension",
+"browser_action": {
+  "default_popup": "popup.html"
+},
+"permissions": [
+  "contextMenus",
+  "tabs"
+]    
+}
