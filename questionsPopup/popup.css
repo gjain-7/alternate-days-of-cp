@@ -1,0 +1,39 @@
+body {
+  width:360px;
+  height:400px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'STIX Two Text', serif;
+  margin-top: 34px;
+  margin-bottom:0;
+  font-weight: bold;
+  color: #002366;
+  text-shadow:0 3px 3px  #ABABFF;
+}
+
+img {
+  float: center;
+  width: 120px;
+  height:110px;
+  border-radius:80%;
+  margin-top: 0;
+}
+#q1 {
+  margin-top: 22px;
+}
+.qbtn {
+  margin-bottom:8px;
+  width:80%;
+}
+#db {
+  float:left;
+  margin-top: 23px;
+  margin-left: 90px;
+}
+#lb {
+  float:left;
+  margin-top: 23px;
+  margin-left: 10px;
+}
