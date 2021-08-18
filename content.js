@@ -12,14 +12,19 @@ const observer = new MutationObserver((mutationsList, observer) => {
     });
 });
 
-t = setInterval(()=>{
-    if(document.querySelector(".submit__2ISl")){
+t1 = setInterval(()=>{
+    if(document.querySelector(".submit__2ISl")){ // add only a one time event listner
         document.querySelector(".submit__2ISl").addEventListener('click',()=>{
-            observer.observe(document.querySelector(".ant-table-body > table > tbody"),
-                { attributes: true, childList: true, subtree: true });
-        });
-        clearInterval(t);
+            t2 = setInterval(()=>{
+                if(document.querySelector(".ant-table-body")){
+                    observer.observe(document.querySelector(".ant-table-body > table > tbody"),
+                    { attributes: true, childList: true, subtree: true });
+                    clearInterval(t2);
+                }
+            },500);
+        },{once : true});
+        clearInterval(t1);
     }
-},1000)
+},1000);
 
 // observer.disconnect();
