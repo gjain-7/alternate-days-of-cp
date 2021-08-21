@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project for DSC</title>
+        <link rel ="stylesheet" href="popup1.css"> 
+        <script src="popup1.js"></script>
+        <script src='timer.js'></script>
+    </head>
+    <body>
+        <h1 id='title'>Alternate days of CP</h1>
+        <img src="icon_200.png">
+        <button type="button" id="signIn" >Sign In with Google</button>
+    
+    </body>
+</html>
