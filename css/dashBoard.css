@@ -6,26 +6,24 @@ h1{
     text-align: center;
     color: #05598aee;
 }
-/* h3{
-    color: #0081cb;
-} */
-input{
-    width: 385px;;
-    padding: 5px;
-}
 img{
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+h2{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
 button{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
-    width: 100%;
     padding: 5px;
-    background-color: #00b0ff;
-    color: white;
+    width: 100%;
     border: none;
+    color: white;
+    background-color: #00b0ff;
 }
