@@ -20,12 +20,24 @@
 //
 
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // listening to content message
-    console.log(message);
+    //console.log(message);
     // POST it to firebase
     // send info questionBoards page (Khushi)
     
+//});
+
+
+let isUserSignedIn=true;
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if(request.message=='isUserSignedIn'){
+        sendResponse({result:isUserSignedIn});
+    } 
+    if(request.message=='signOut'){
+        isUserSignedIn=false;
+    }    
 });
 
 
