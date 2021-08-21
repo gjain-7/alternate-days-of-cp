@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Project for DSC</title>
-        <link rel ="stylesheet" href="popup1.css"> 
-        <script src="popup1.js"></script>
-        <script src='timer.js'></script>
-    </head>
-    <body>
-        <h1 id='title'>Alternate days of CP</h1>
-        <img src="icon_200.png">
-        <button type="button" id="signIn" >Sign In with Google</button>
-    
-    </body>
-</html>
+body{
+    width: 400px;
+    height: 400px;
+}
+h1{
+    text-align: center;
+    color: #05598aee;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: none;
+    color: white;
+    background-color: #00b0ff;
+   
+}
