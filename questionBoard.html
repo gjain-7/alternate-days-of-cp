@@ -8,21 +8,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <link rel="stylesheet" href="questionBoard.css">
+  <link rel="stylesheet" href="css/popup.css">
+
 </head>
 
 <body>
-  <h1>QUESTIONS</h1>
-  <img src="questionicon.jpg" alt="questionicon"><br>
+  <h3 id="timer"></h3>
+  <h1 id="heading">QUESTIONS</h1>
+  <img src="images/questionicon.jpg" alt="questionicon"><br>
+  <button type="button" id="status" class="btn btn-sm btn-primary">View Status</button>
   <button type="button" id="q1" class="btn btn-lg btn-info qbtn">Question 1 <bold>-></bold></button><br>
   <button type="button" id="q2" class="btn btn-lg btn-info qbtn">Question 2 <bold>-></bold></button><br>
   <button type="button" id="q3" class="btn btn-lg btn-info qbtn">Question 3 <bold>-></bold></button><br>
 
 
-  <a href="dashBoard.html"><button type="button" id="db" class="btn btn-sm btn-primary">DashBoard</button></a>
-  <a href="leaderBoard.html"><button type="button" id="lb" class="btn btn-sm btn-primary">leaderBoard</button></a>
+  <button type="button" id="db" class="btn btn-sm btn-primary">DashBoard</button>
+  <button type="button" id="lb" class="btn btn-sm btn-primary">LeaderBoard</button>
 
-  <script type="text/javascript" src="questionBoard.js"></script>
+  <script type="text/javascript" src="js/popup.js"></script>
+  <script type="text/javascript" src="js/timer.js"></script>
 
 
 </body>
