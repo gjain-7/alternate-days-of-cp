@@ -27,4 +27,24 @@ t1 = setInterval(()=>{
     }
 },1000);
 
+
+//code to be executed for connecting questionBoard and Results:-
+
+// console.log("The extension is here!");
+
+// chrome.runtime.onMessage.addListener(receivedMessage);
+// function receivedMessage( request, sender, sendResponse) {
+//   console.log("inside func2");
+
+//     if(request.txt === "ViewStatus"){
+//       console.log(request.txt);
+//       let stats = {acceptable:"yes",running:"2sec"};
+//       sendResponse(stats);
+//     }
+
+// }
+
+
+
+
 // observer.disconnect();
