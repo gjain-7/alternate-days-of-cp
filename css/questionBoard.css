@@ -1,12 +1,12 @@
 body {
   width:360px;
-  height:400px;
+  height:460px;
   text-align: center;
 }
 
 h1 {
   font-family: 'STIX Two Text', serif;
-  margin-top: 34px;
+  margin-top: 10px;
   margin-bottom:0;
   font-weight: bold;
   color: #002366;
@@ -21,11 +21,14 @@ img {
   margin-top: 0;
 }
 #q1 {
-  margin-top: 22px;
+  margin-top: 8px;
 }
 .qbtn {
   margin-bottom:8px;
   width:80%;
+}
+#status {
+  margin-top: 6px;
 }
 #db {
   float:left;
