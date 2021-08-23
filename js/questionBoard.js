@@ -1,4 +1,16 @@
-//
+
+
+document.getElementById("status").addEventListener("click",gotowhat)
+function gotowhat(){
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+     chrome.tabs.sendMessage(tabs[0].id, {txt:"ViewStatus"}, function(stats) {
+       if(stats.acceptable === "yes")
+       document.getElementById("heading").style["color"] = "red";
+     });
+   });
+}
+
+
 // document.getElementById("userInput").addEventListener("input",changeText);
 //
 // function changeText(){
