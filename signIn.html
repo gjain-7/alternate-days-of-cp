@@ -2,14 +2,20 @@
 <html>
     <head>
         <title>Project for DSC</title>
-        <link rel ="stylesheet" href="css/signIn.css"> 
-        <script src="js/signIn.js"></script>
-        <script src='js/timer.js'></script>
+        <link rel ="stylesheet" href="css/signIn.css">   
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />     
+        
     </head>
     <body>
         <h1 id='title'>Alternate days of CP</h1>
         <img src="icon_200.png">
-        <button type="button" id="signIn" >Sign In with Google</button>
-    
+        <button type="button" id="signIn" >Sign In with </button>
+        <div id="firebaseui-auth-container"></div>
+        
+        <script src="js/signIn.js" ></script>
+        <script src="js/firebase.js"></script>
     </body>
 </html>
