@@ -29,16 +29,26 @@
 //});
 
 
-let isUserSignedIn=true;
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if(request.message=='isUserSignedIn'){
-        sendResponse({result:isUserSignedIn});
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { 
+    if(request.message==='Sign Out'){
+        chrome.storage.sync.set({userStatus:false})
+        sendResponse({message:'success'})        
     } 
-    if(request.message=='signOut'){
-        isUserSignedIn=false;
-    }    
+    if(request.message==='Sign In'){        
+        chrome.storage.sync.set({user:request.user,userStatus:true});
+        sendResponse({message:'success'});
+    }
 });
+chrome.runtime.onConnect.addListener(function(port){
+    port.onMessage.addListener(function(msg) {
+        if (msg.message === "isUserSignedIn"){
+            chrome.storage.sync.get(['userStatus'],function(result){
+                port.postMessage({signedInStatus:result.userStatus});
+            });
+        }          
+    });
+})
+
 
 
 
