@@ -2,19 +2,25 @@
 <html>
     <head>
         <title>Project for DSC</title>
-        <link rel ="stylesheet" href="js/dashBoard.css">
-        <script src="js/timer.js"></script>
+        <link rel ="stylesheet" href="css/dashBoard.css">
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />       
         
     </head>
     <body>
         <h1>Alternate days of CP</h1>
-        <img src="icon_200.png">
-        <h2>Name</h2>
+        <img src="icon_200.png" id="profileImage">
+        <h2 id="userName">Name</h2>
         <h2>Rating</h2>
         <h3 id='timer'> <br></h3>
         <button type="button" id="contest">Enter Contest</button><br>
         <button type="button" id="results">Results</button><br>
         <button type="button" id="signOut" ">Sign Out</button>
+
         <script src="js/dashBoard.js"></script> 
+        <script src="js/timer.js"></script>
+        
     </body>
 </html>
