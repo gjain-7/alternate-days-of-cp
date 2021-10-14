@@ -20,13 +20,13 @@
 //
 
 
-//chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    // listening to content message
-    //console.log(message);
-    // POST it to firebase
-    // send info questionBoards page (Khushi)
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//     listening to content message
+//     console.log(message);
+//     POST it to firebase
+//     send info questionBoards page (Khushi)
     
-//});
+// });
 
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { 
@@ -34,8 +34,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.storage.sync.set({userStatus:false})
         sendResponse({message:'success'})        
     } 
-    if(request.message==='Sign In'){        
-        chrome.storage.sync.set({user:request.user,userStatus:true});
+    if(request.message==='Sign In'){
+        chrome.storage.sync.set({user:request.user,userStatus:true,rating:request.rating});
         sendResponse({message:'success'});
     }
 });
@@ -48,9 +48,3 @@ chrome.runtime.onConnect.addListener(function(port){
         }          
     });
 })
-
-
-
-
-
-

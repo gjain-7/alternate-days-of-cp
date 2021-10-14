@@ -1,24 +1,35 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyAZ84X0YhohHFY9DTayxf0fy57rkX9DyJE",
-    authDomain: "authentication-extension-dab77.firebaseapp.com",
-    projectId: "authentication-extension-dab77",
-    storageBucket: "authentication-extension-dab77.appspot.com",
-    messagingSenderId: "913287961039",
-    appId: "1:913287961039:web:0713398a5d31f23e22daba",
-    measurementId: "G-GGDVZ9BZ0M"
-  };
+  apiKey: "AIzaSyBRnVor3AVva1MCJrvKY6gMCeGX17c6nic",
+  authDomain: "alternate-days-of-cp-eabcd.firebaseapp.com",
+  databaseURL: "https://alternate-days-of-cp-eabcd-default-rtdb.firebaseio.com",
+  projectId: "alternate-days-of-cp-eabcd",
+  storageBucket: "alternate-days-of-cp-eabcd.appspot.com",
+  messagingSenderId: "226869401306",
+  appId: "1:226869401306:web:e7ef9730bdb168ef54b7e3"
+};
 firebase.initializeApp(firebaseConfig);
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const db = firebase.firestore();
+
 const uiConfig = {
     callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      signInSuccessWithAuthResult:async function(authResult, redirectUrl) {
         const user=firebase.auth().currentUser;
-        chrome.runtime.sendMessage({message:'Sign In',user:user},function(response){
-            if(response.message=='success'){
-              window.location.replace('popup2.html');                  
-            }
+        console.log(user);
+        var rating;
+        await db.collection('users').doc(user.email).get().then(doc=>{
+          if(!doc.exists){ // users should exist
+            db.collection('users').doc(user.email).set({rating:0})
+          }
+          else{
+            rating = doc.data().rating
+          }
         })
-       
+        await chrome.runtime.sendMessage({message:'Sign In',user:user,rating:rating},function(response){
+            if(response.message=='success'){
+              window.location.replace('dashBoard.html');                  
+            }
+        })    
         return false;
       },
       uiShown: function() {
@@ -33,8 +44,7 @@ const uiConfig = {
             prompt:'select_account'
         }
       }
-    ],
-   
+    ],   
 };
 ui.start('#firebaseui-auth-container', uiConfig);
 // document.getElementById('signIn').addEventListener('click',()=>{

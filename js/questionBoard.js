@@ -10,7 +10,6 @@ function gotowhat(){
    });
 }
 
-
 // document.getElementById("userInput").addEventListener("input",changeText);
 //
 // function changeText(){

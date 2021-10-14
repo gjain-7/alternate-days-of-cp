@@ -1,7 +1,10 @@
 chrome.storage.sync.get(['user'],function(result){
     const userDetails= result.user;
-    document.getElementById('userName').innerHTML=userDetails.displayName;
+    document.getElementById('userName').innerText=userDetails.displayName;
     document.getElementById('profileImage').src=userDetails.photoURL;
+})
+chrome.storage.sync.get(['rating'],function(result){
+    document.getElementById('rating').innerText=result.rating;
 })
 
 const signOutButton=document.getElementById('signOut')
