@@ -2,6 +2,7 @@
 firebase.initializeApp({
   apiKey: "AIzaSyBRnVor3AVva1MCJrvKY6gMCeGX17c6nic",
   authDomain: "alternate-days-of-cp-eabcd.firebaseapp.com",
+  databaseURL: "https://alternate-days-of-cp-eabcd-default-rtdb.firebaseio.com",
   projectId: "alternate-days-of-cp-eabcd",
   storageBucket: "alternate-days-of-cp-eabcd.appspot.com",
   messagingSenderId: "226869401306",
@@ -11,53 +12,84 @@ firebase.initializeApp({
 var db = firebase.firestore();
 
 var questionPointer;
-var docRef = db.collection("questionsList").doc("questionPointer");
-docRef.get().then((doc)=>{
-  questionPointer=doc.data().questionPointer;
-});
+
 
 document.getElementById("q1").addEventListener("click",handleClick1);
- function handleClick1(){
-   db.collection("questionsList").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        if(doc.data().qNumber === questionPointer) {chrome.tabs.create({url: doc.data().qLink});}
-    });
+async function handleClick1(){
+
+ await db.collection("questionsList").doc('questionPointer').get().then((doc)=>{
+  questionPointer=doc.data().questionPointer;
+  console.log(doc.data());
 });
+
+ await db.collection("questionsList").get().then((querySnapshot) => {
+ querySnapshot.forEach((doc) => {
+   if(parseInt(doc.id) === questionPointer) {chrome.tabs.create({url: doc.data().qLink});}
+ });
+});
+
+
 }
 
 document.getElementById("q2").addEventListener("click",handleClick2)
-function handleClick2(){
-  db.collection("questionsList").get().then((querySnapshot) => {
-   querySnapshot.forEach((doc) => {
-       if(doc.data().qNumber === (questionPointer+1)) chrome.tabs.create({url: doc.data().qLink});
-   });
+async function handleClick2(){
+
+  await db.collection("questionsList").doc('questionPointer').get().then((doc)=>{
+   questionPointer=doc.data().questionPointer;
+   console.log(doc.data());
+ });
+
+  await db.collection("questionsList").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    if(parseInt(doc.id) === questionPointer+1) {chrome.tabs.create({url: doc.data().qLink});}
   });
+ });
+
 }
 
 document.getElementById("q3").addEventListener("click",handleClick3)
-function handleClick3(){
-  db.collection("questionsList").get().then((querySnapshot) => {
-   querySnapshot.forEach((doc) => {
-       if(doc.data().qNumber === (questionPointer+2)) chrome.tabs.create({url: doc.data().qLink});
-   });
+async function handleClick3(){
+
+  await db.collection("questionsList").doc('questionPointer').get().then((doc)=>{
+   questionPointer=doc.data().questionPointer;
+   console.log(doc.data());
   });
+
+  await db.collection("questionsList").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    if(parseInt(doc.id) === questionPointer+2) {chrome.tabs.create({url: doc.data().qLink});}
+  });
+  });
+
 }
 
+
+// ************************************************************************************************************
 
 
 //connecting with background to get metadata about each question
 
 document.getElementById("status").addEventListener("click",gotowhat)
 function gotowhat(){
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-     chrome.tabs.sendMessage(tabs[0].id, {txt:"ViewStatus"}, function(stats) {
-       if(stats.acceptable === "yes")
-       {document.getElementById("heading").style["color"] = "red";}
+   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+     chrome.tabs.sendMessage(tabs[0].id, {message:"ViewStatus"}, function(stats) {
+       if(stats.status === "accepted")
+       {document.getElementById("q1").style["background-color"] = "#6ECB63";}
+       if(stats.status === "wrong answer")
+       {document.getElementById("q1").style["background-color"] = "#E02401";}
+       if(stats.status === "runtime error")
+       {document.getElementById("q1").style["background-color"] = "#FFF9B6";}
+       if(stats.status === "time limit exeeded")
+       {document.getElementById("q1").style["background-color"] = "#FFDAC7";}
      });
    });
 }
 
 
+
+
+
+// ***********************************************************************************************************
 
 //Timer and updating questionPointer
 var countDownDate=new Date("Sep 5, 2021 17:30:00").getTime();
@@ -72,49 +104,5 @@ var timerId=setInterval(function(){
     if(availableTime<0){
         clearInterval(timerId)
         document.getElementById('timer').innerHTML="Contest has ended";
-        db.collection('questionsList').doc('questionPointer').update({questionPointer: questionPointer+1});
     }
 },1000);
-
-// var mytimer = setInterval(function(){questionPointer=questionPointer+3; console.log(questionPointer);},20000);
-
-
-
-
-
-//adding data to database
-//    db.collection("users").add({
-//     first: "Alan",
-//     middle: "Mathison",
-//     last: "Turing",
-//     born: 1912
-// })
-// .then((docRef) => {
-//     console.log("Document written with ID: ", docRef.id);
-// })
-// .catch((error) => {
-//     console.error("Error adding document: ", error);
-// });
-
-
-
-// document.getElementById("userInput").addEventListener("input",changeText);
-//
-// function changeText(){
-// var newText = document.getElementById("userInput").value;
-//
-// let params = {
-//   active:true,
-//   currentWindow:true
-// }
-//
-// chrome.tabs.query(params, gotTabs);
-//
-// function gotTabs(tabs){
-//   let msg = {
-//     "txt" : newText
-//   }
-//   chrome.tabs.sendMessage(tabs[0].id, msg);
-// }
-//
-// }

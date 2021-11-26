@@ -3,7 +3,7 @@
 // User's google image and name and rating
 // background stores signed in user's history previous contests --top 'n'
 // backgrounds stores question if contest is running (check it from current time)
-// 
+//
 // 2 create function for posting data to table
 
 
@@ -25,15 +25,15 @@
 //     console.log(message);
 //     POST it to firebase
 //     send info questionBoards page (Khushi)
-    
+
 // });
 
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => { 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if(request.message==='Sign Out'){
         chrome.storage.sync.set({userStatus:false})
-        sendResponse({message:'success'})        
-    } 
+        sendResponse({message:'success'})
+    }
     if(request.message==='Sign In'){
         chrome.storage.sync.set({user:request.user,userStatus:true,rating:request.rating});
         sendResponse({message:'success'});
@@ -45,6 +45,6 @@ chrome.runtime.onConnect.addListener(function(port){
             chrome.storage.sync.get(['userStatus'],function(result){
                 port.postMessage({signedInStatus:result.userStatus});
             });
-        }          
+        }
     });
 })
