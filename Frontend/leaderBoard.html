@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <head>
     <title>Popup</title>
-    <link href="leaderBoard.css" rel="stylesheet" />
+    <link href="css/leaderBoard.css" rel="stylesheet" />
+    
 </head>
+
+
+
+
+
 <body>
     <div class="heading">
-        <a href="dashBoard.html"><button>DashBoard</button></a>
+        <a href="dashBoard.html"><button type="button">DashBoard</button></a>
         <h3>Alternate Days of CP</h3>
     </div>
     <hr />
     <div class="body">
         <div class="custom-select">
-            <select class="select-box">
-              <option value="0">Select Contest</option>
-              <option value="1">Contest 1</option>
-              <option value="2">Contest 2</option>
+            <select class="select-box" id="contest-select-box">
+
             </select>
         </div>
         <div class="ranking">
@@ -22,50 +26,15 @@
                 <p>Name</p> 
                 <p>Points</p>
             </div>
-            <div class="ranking-items">
-                <div class="item">
-                    <p>Contestant 1</p>
-                    <p> 30 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 2</p>
-                    <p> 26 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 3</p>
-                    <p> 25 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 4</p>
-                    <p> 23 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 5</p>
-                    <p> 20 </p>
-                    
-                </div>
-                <div class="item">
-                    <p>Contestant 1</p>
-                    <p> 30 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 2</p>
-                    <p> 26 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 3</p>
-                    <p> 25 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 4</p>
-                    <p> 23 </p>
-                </div>
-                <div class="item">
-                    <p>Contestant 5</p>
-                    <p> 20 </p>
-                    
-                </div>
+            <div class="ranking-items" id="ranked-list">
+                
             </div>
         </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/leaderBoard.js"></script>
 </body>

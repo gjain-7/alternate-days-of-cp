@@ -9,7 +9,9 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
-const db = firebase.firestore();
+let db = firebase.firestore();
+
+const contests = db.collection("contests")
 
 const uiConfig = {
     callbacks: {
@@ -47,6 +49,8 @@ const uiConfig = {
     ],   
 };
 ui.start('#firebaseui-auth-container', uiConfig);
+const currentuser = firebase.auth().currentUser;
+
 // document.getElementById('signIn').addEventListener('click',()=>{
 //     // The start method will wait until the DOM is loaded.
 //     ui.start('#firebaseui-auth-container', uiConfig);

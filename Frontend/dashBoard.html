@@ -3,11 +3,13 @@
     <head>
         <title>Project for DSC</title>
         <link rel ="stylesheet" href="css/dashBoard.css">
-        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        
+        <script src="js/firebase.js"></script>
         
     </head>
     <body>
@@ -17,7 +19,12 @@
         <h2 id="rating">Rating</h2>
         <h3 id='timer'> <br></h3>
         <button type="button" id="contest">Enter Contest</button><br>
-        <button type="button" id="results">Results</button><br>
+        <a href='/leaderBoard.html'>
+            <button type="button">
+                Results
+            </button>
+            </a>
+            <br>
         <button type="button" id="signOut" ">Sign Out</button>
 
         <script src="js/dashBoard.js"></script> 
